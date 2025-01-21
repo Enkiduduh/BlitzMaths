@@ -4,20 +4,53 @@ import {
 
 const handCardContainerHTML = document.querySelector(".hand-card-container");
 const cardEmpPlayerHTML = document.querySelectorAll(".emplacement-player");
+const cardEmpBotHTML = document.querySelectorAll(".emplacement-bot");
 
-
-for (let i = 1; i < 7; i++) {
-  const randomN = Math.floor(Math.random() * 10);
-  const handCardInjection = `
-  <div
-  class="hand-card"><img src="${eval(`cardDwarf_${randomN}`).img}" alt="81" class="hand-card-img">
-  </div>
-  `;
-  handCardContainerHTML.innerHTML += handCardInjection;
-};
-
-function placeCardOnEmplacement() {
+function handCardBot() {
+  for (let i = 1; i < 4; i++) {
+    const handCardInjectionBot = `
+    <div
+    class="hand-card"><img src="assets/cards/testCardBgBot.png" alt="81" class="hand-card-img">
+    </div>
+    `;
+    cardEmpBotHTML.innerHTML += handCardInjectionBot;
+  }
 }
+
+let playerDeck = 30;
+const deckCount = document.querySelector(".deck-count");
+
+
+function initializeGame() {
+  for (let i = 1; i < 7; i++) {
+    const randomN = Math.floor(Math.random() * 10);
+    const handCardInjection = `
+    <div
+    class="hand-card"><img src="${eval(`cardDwarf_${randomN}`).img}" alt="81" class="hand-card-img">
+    </div>
+    `;
+    handCardContainerHTML.innerHTML += handCardInjection;
+    playerDeck -= 1;
+    deckCount.textContent = `${playerDeck} cartes restantes`;
+  };
+}
+
+function CardRecover() {
+  for (let i = 1; i < 4; i++) {
+    const randomN = Math.floor(Math.random() * 10);
+    const handCardInjection = `
+      <div
+      class="hand-card"><img src="${eval(`cardDwarf_${randomN}`).img}" alt="81" class="hand-card-img">
+      </div>
+      `;
+    handCardContainerHTML.innerHTML += handCardInjection;
+    playerDeck -= 1;
+    deckCount.textContent = `${playerDeck} cartes restantes`;
+  };
+}
+
+
+
 
 let tempArr = [];
 let cardChoiceText = "";
@@ -40,8 +73,11 @@ setTimeout(() => {
       cardEmpPlayerHTML.forEach(empl => (
         empl.addEventListener("click", function () {
           empl.innerHTML = cardChoiceText.replace("chosen", "");
+          item.parentElement.remove();
+          console.log(`Number of children after removing a card: ${handCardContainerHTML.childElementCount}`);
 
-          if (empl.innerHTML == null) {
+          if (handCardContainerHTML.childElementCount <= 3) {
+            CardRecover();
           }
         })
       ))
@@ -58,3 +94,5 @@ setTimeout(() => {
 
 
 // placeCardOnEmplacement();
+initializeGame();
+handCardBot();

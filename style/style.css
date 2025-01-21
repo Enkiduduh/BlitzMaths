@@ -6,6 +6,7 @@ body {
   width: 100vw;
   height: 100vh;
   background: darkslategrey;
+  font-family: "Pirata One", serif;
 }
 
 .game-zone {
@@ -50,21 +51,28 @@ body {
 }
 
 .emplacement-bot {
-  width: 120px;
-  height: 150px;
   border-radius: 5px;
-  background-image: url("/assets/cards/sword_bg.png");
+  background-image: url("/assets/cards/sword2_bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  transform: scale(-1);
+  transform: scale(-0.91);
+  width: 120px;
+  height: 160px;
+  border: 3px solid black;
+  background: rgb(17, 62, 92);
+  border-radius: 5px;
+  background-image: url("/assets/cards/testCardBgBot.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .emplacement-player {
   width: 120px;
   height: 150px;
   border-radius: 5px;
-  background-image: url("/assets/cards/sword_bg.png");
+  background-image: url("/assets/cards/sword2_bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -142,6 +150,12 @@ body {
 
 .deck-count {
   text-align: center;
+  width: 124px;
+  position: absolute;
+  bottom: -35px;
+  right: 0;
+  color: whitesmoke;
+  font-size: 18px;
 }
 
 .card-deck-tomb {
