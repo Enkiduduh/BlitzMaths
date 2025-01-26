@@ -87,3 +87,7 @@ export const cardDwarf_9 = {
   blue : 8,
   yellow : 5
 }
+
+export function fightRules_0() {
+
+}
