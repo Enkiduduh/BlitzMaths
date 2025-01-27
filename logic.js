@@ -1,8 +1,11 @@
 import {
-  cardDwarf_0, cardDwarf_1, cardDwarf_2, cardDwarf_3, cardDwarf_4, cardDwarf_5, cardDwarf_6, cardDwarf_7, cardDwarf_8, cardDwarf_9
+  cardDwarf_0, cardDwarf_1, cardDwarf_2, cardDwarf_3, cardDwarf_4, cardDwarf_5, cardDwarf_6, cardDwarf_7, cardDwarf_8, cardDwarf_9,
+  cardOrc_0, cardOrc_1, cardOrc_2, cardOrc_3, cardOrc_4, cardOrc_5, cardOrc_6, cardOrc_7, cardOrc_8, cardOrc_9
 } from "./data.js";
 
 const data = [cardDwarf_0, cardDwarf_1, cardDwarf_2, cardDwarf_3, cardDwarf_4, cardDwarf_5, cardDwarf_6, cardDwarf_7, cardDwarf_8, cardDwarf_9
+]
+const dataOrc = [cardOrc_0, cardOrc_1, cardOrc_2, cardOrc_3, cardOrc_4, cardOrc_5, cardOrc_6, cardOrc_7, cardOrc_8, cardOrc_9
 ]
 const handCardContainerHTML = document.querySelector(".hand-card-container");
 const cardEmpPlayerHTML = document.querySelectorAll(".emplacement-player");
@@ -14,7 +17,7 @@ const cardEmpBotHTML = document.querySelectorAll(".emplacement-bot");
 function InitializeBotCard() {
   for (let i = 1; i < 4; i++) {
     const handCardInjectionBot = `
-    <div class="hand-card playedCard-bot">
+    <div class="playedCard-bot">
                   <img
                     src="assets/cards/testCardBgBot.png"
                     alt="81"
@@ -31,7 +34,7 @@ function DisplayCardBot() {
     const randomN = Math.floor(Math.random() * 10);
     const handCardInjectionBot = `
     <div
-    class="hand-card"><img src="${eval(`cardDwarf_${randomN}`).img}" alt="81" class="hand-card-img ">
+    class="playedCard-bot"><img src="${dataOrc[randomN].img}" alt="81" class="hand-card-img ">
     </div>
     `;
     document.querySelector(`.bot-emplacement-card-${i}`).innerHTML = handCardInjectionBot;
@@ -47,7 +50,7 @@ function initializeGame() {
     const randomN = Math.floor(Math.random() * 10);
     const handCardInjection = `
     <div
-    class="hand-card"><img src="${eval(`cardDwarf_${randomN}`).img}" alt="81" class="hand-card-img ">
+    class="hand-card"><img src="${data[randomN].img}" alt="81" class="hand-card-img ">
     </div>
     `;
     handCardContainerHTML.innerHTML += handCardInjection;
@@ -61,7 +64,7 @@ function CardRecover() {
     const randomN = Math.floor(Math.random() * 10);
     const handCardInjection = `
       <div
-      class="hand-card"><img src="${eval(`cardDwarf_${randomN}`).img}" alt="81" class="hand-card-img ">
+      class="hand-card"><img src="${data[randomN].img}" alt="81" class="hand-card-img ">
       </div>
       `;
     handCardContainerHTML.innerHTML += handCardInjection;
@@ -128,24 +131,70 @@ setTimeout(() => {
           displayDataCard(empl, empl.id)
         }
 
-        validateTurnPlayer();
+        validateTurnPlayer(empl, empl.id);
+
       }
     })
   ))
 
 }, 10)
 
+function verifyEmplCardBot() {
+  const cardEmpBotHTML = document.querySelectorAll(".emplacement-bot");
+  cardEmpBotHTML.forEach(empl => {
+    if (empl.id == "empl-bot-1") {
+      console.log(empl, "empl-bot-1")
+      displayDataCardBot(empl, empl.id)
+    } else if (empl.id == "empl-bot-2") {
+      console.log(empl, "empl-bot-2")
+      displayDataCardBot(empl, empl.id)
+    } else if (empl.id == "empl-bot-3") {
+      console.log(empl, "empl-bot-3")
+      displayDataCardBot(empl, empl.id)
+    }
+  })
+}
+
+function displayDataCardBot(empl, emplId) {
+  if (!empl) {
+    console.error("empl is undefined");
+    return;
+  }
+  const fullSrc = empl.querySelector("img").src;
+  const baseUrl = window.location.origin + "/";
+  const itemSrc = fullSrc.replace(baseUrl, "");
+  const objCard = dataOrc.filter(card => card.img == itemSrc);
+  const emplIdSuppressor = "empl-bot-"
+  const emplIdRecover = emplId.replace(emplIdSuppressor, "");
+  const resultHTML = document.querySelector(`.result-bot-${emplIdRecover}`);
+
+  if (objCard.length > 0) {
+    console.log(resultHTML, emplIdRecover)
+    const red = objCard[0].red;
+    const blue = objCard[0].blue;
+    const yellow = objCard[0].yellow;
+    const redHTML = document.querySelector(`.bot-red-${emplIdRecover}`)
+    console.log(`red: ${red}`, `blue: ${blue}`, `yellow: ${yellow}`)
+    document.querySelector(`.bot-red-${emplIdRecover}`).textContent = red;
+    document.querySelector(`.bot-blue-${emplIdRecover}`).textContent = blue;
+    document.querySelector(`.bot-yellow-${emplIdRecover}`).textContent = yellow;
+  }
+}
 
 function displayDataCard(empl, emplId) {
+  if (!empl) {
+    console.error("empl is undefined");
+    return;
+  }
   const fullSrc = empl.querySelector("img").src;
   const baseUrl = window.location.origin + "/";
   const itemSrc = fullSrc.replace(baseUrl, "");
   const objCard = data.filter(card => card.img == itemSrc);
   const emplIdSuppressor = "empl-"
   const emplIdRecover = emplId.replace(emplIdSuppressor, "");
+  const resultHTML = document.querySelector(`.result-player-${emplIdRecover}`);
 
   if (objCard.length > 0) {
-    const resultHTML = document.querySelector(`.result-player-${emplIdRecover}`);
     console.log(resultHTML, emplIdRecover)
     const red = objCard[0].red;
     const blue = objCard[0].blue;
@@ -156,20 +205,6 @@ function displayDataCard(empl, emplId) {
     document.querySelector(`.player-yellow-${emplIdRecover}`).textContent = yellow;
   }
 }
-
-
-// function playerTurnValid(emplacementCard) {
-//   if (counterEmpl == 3) {
-//     console.log("Trois cartes ont été jouées.");
-//     const swordBgCard = `<img
-//                 class="emplacement-player-img"
-//                 src="/assets/cards/sword2_bg.png"
-//                 alt=""
-//               />`;
-//     emplacementCard.innerHTML = swordBgCard;
-//   }
-// }
-
 
 function verifyEmplFree(item) {
   if (item.classList.contains("chosen")) {
@@ -183,36 +218,53 @@ function verifyEmplFree(item) {
   }
 }
 
+let cardEmpl1Valid = false;
+let cardEmpl2Valid = false;
+let cardEmpl3Valid = false;
 
-function validateTurnPlayer() {
+function validateTurnPlayer(emplacement, emplacementId) {
   const cardEmpl1 = document.getElementById("empl-1");
   const cardEmpl2 = document.getElementById("empl-2");
   const cardEmpl3 = document.getElementById("empl-3");
-  let cardEmpl1Valid = false;
-  let cardEmpl2Valid = false;
-  let cardEmpl3Valid = false;
 
-  if (cardEmpl1.firstChild && cardEmpl1.firstChild.matches(".hand-card")) {
-    cardEmpl1Valid = true
+  console.log("Player turn not done yet.")
+  if (cardEmpl1.firstElementChild) {
+    console.log("cardEmpl1.firstElementChild:", cardEmpl1.firstElementChild);
+    if (cardEmpl1.firstElementChild.classList.contains("hand-card-img")) {
+      cardEmpl1Valid = true;
+      console.log("CardEmpl1Valid ?", cardEmpl1Valid);
+    }
   }
-  if (cardEmpl2.firstChild &&
-    cardEmpl2.firstChild.matches(".hand-card")) {
-    cardEmpl2Valid = true
+  if (cardEmpl2.firstElementChild) {
+    console.log("cardEmpl2.firstElementChild:", cardEmpl2.firstElementChild);
+    if (cardEmpl2.firstElementChild.classList.contains("hand-card-img")) {
+      cardEmpl2Valid = true;
+      console.log("CardEmpl2Valid ?", cardEmpl2Valid);
+    }
   }
-  if (cardEmpl3.firstChild &&
-    cardEmpl3.firstChild.matches(".hand-card")) {
-    cardEmpl3Valid = true
+  if (cardEmpl3.firstElementChild) {
+    console.log("cardEmpl3.firstElementChild:", cardEmpl3.firstElementChild);
+    if (cardEmpl3.firstElementChild.classList.contains("hand-card-img")) {
+      cardEmpl3Valid = true;
+      console.log("CardEmpl3Valid ?", cardEmpl3Valid);
+    }
   }
+  if (cardEmpl1Valid && cardEmpl2Valid && cardEmpl3Valid) {
+    console.log("Player turn done.")
+    DisplayCardBot();
+    verifyEmplCardBot();
+    displayDataCard(emplacement, emplacementId);
 
-
-  console.log("Player turn done.")
-  DisplayCardBot();
-  // } else {
-  //   console.log("Player turn not done yet.")
-  // }
+    cardEmpl1Valid = false;
+    cardEmpl2Valid = false;
+    cardEmpl3Valid = false;
+  }
 }
 
 
-// placeCardOnEmplacement();
-initializeGame();
-InitializeBotCard();
+function startGame() {
+  initializeGame(); // Pour les cartes du joueur
+  InitializeBotCard(); // Pour injecter les cartes des Bots
+  verifyEmplCardBot(); // Vérifie et affiche les données des Bots
+}
+startGame();
