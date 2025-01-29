@@ -3,6 +3,11 @@ import {
   cardOrc_0, cardOrc_1, cardOrc_2, cardOrc_3, cardOrc_4, cardOrc_5, cardOrc_6, cardOrc_7, cardOrc_8, cardOrc_9
 } from "./data.js";
 
+
+import {
+  recoverDataNumberColor, battleRuleLesserWins,battleRuleGreaterWins
+} from "./rules.js"
+
 const data = [cardDwarf_0, cardDwarf_1, cardDwarf_2, cardDwarf_3, cardDwarf_4, cardDwarf_5, cardDwarf_6, cardDwarf_7, cardDwarf_8, cardDwarf_9
 ]
 const dataOrc = [cardOrc_0, cardOrc_1, cardOrc_2, cardOrc_3, cardOrc_4, cardOrc_5, cardOrc_6, cardOrc_7, cardOrc_8, cardOrc_9
@@ -17,7 +22,7 @@ const cardEmpBotHTML = document.querySelectorAll(".emplacement-bot");
 function InitializeBotCard() {
   for (let i = 1; i < 4; i++) {
     const handCardInjectionBot = `
-    <div class="playedCard-bot">
+    <div class="playedCard-bot ">
                   <img
                     src="assets/cards/testCardBgBot.png"
                     alt="81"
@@ -145,7 +150,8 @@ function verifyEmplCardBot() {
     if (empl.id == "empl-bot-1") {
       console.log(empl, "empl-bot-1")
       displayDataCardBot(empl, empl.id)
-    } else if (empl.id == "empl-bot-2") {
+    }
+    if (empl.id == "empl-bot-2") {
       console.log(empl, "empl-bot-2")
       displayDataCardBot(empl, empl.id)
     } else if (empl.id == "empl-bot-3") {
@@ -153,6 +159,7 @@ function verifyEmplCardBot() {
       displayDataCardBot(empl, empl.id)
     }
   })
+  battleReady();
 }
 
 function displayDataCardBot(empl, emplId) {
@@ -167,13 +174,12 @@ function displayDataCardBot(empl, emplId) {
   const emplIdSuppressor = "empl-bot-"
   const emplIdRecover = emplId.replace(emplIdSuppressor, "");
   const resultHTML = document.querySelector(`.result-bot-${emplIdRecover}`);
-
+  console.log(objCard);
   if (objCard.length > 0) {
     console.log(resultHTML, emplIdRecover)
     const red = objCard[0].red;
     const blue = objCard[0].blue;
     const yellow = objCard[0].yellow;
-    const redHTML = document.querySelector(`.bot-red-${emplIdRecover}`)
     console.log(`red: ${red}`, `blue: ${blue}`, `yellow: ${yellow}`)
     document.querySelector(`.bot-red-${emplIdRecover}`).textContent = red;
     document.querySelector(`.bot-blue-${emplIdRecover}`).textContent = blue;
@@ -195,11 +201,9 @@ function displayDataCard(empl, emplId) {
   const resultHTML = document.querySelector(`.result-player-${emplIdRecover}`);
 
   if (objCard.length > 0) {
-    console.log(resultHTML, emplIdRecover)
     const red = objCard[0].red;
     const blue = objCard[0].blue;
     const yellow = objCard[0].yellow;
-    console.log(`red: ${red}`, `blue: ${blue}`, `yellow: ${yellow}`)
     document.querySelector(`.player-red-${emplIdRecover}`).textContent = red;
     document.querySelector(`.player-blue-${emplIdRecover}`).textContent = blue;
     document.querySelector(`.player-yellow-${emplIdRecover}`).textContent = yellow;
@@ -261,6 +265,11 @@ function validateTurnPlayer(emplacement, emplacementId) {
   }
 }
 
+function battleReady() {
+  console.log("let's battle begins.")
+  recoverDataNumberColor();
+ 
+}
 
 function startGame() {
   initializeGame(); // Pour les cartes du joueur

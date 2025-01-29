@@ -7,6 +7,8 @@ body {
   height: 100vh;
   background: darkslategrey;
   font-family: "Pirata One", serif;
+  position: relative;
+  z-index: 1;
 }
 
 .game-zone {
@@ -250,4 +252,23 @@ body {
 
 .playedCard-bot {
   transform: scale(1.07);
+  transition: transform 0.33s ease;
+}
+
+.modal-game-rules-container {
+  position: absolute;
+  z-index: 10;
+  width: 700px;
+  height: 400px;
+  background: black;
+  border: 7px solid goldenrod;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.modal-game-rules-container .modal-game-rules {
+  width: 650px;
+  height: 350px;
+  background: blue;
+  border: 7px solid goldenrod;
 }/*# sourceMappingURL=style.css.map */
