@@ -89,7 +89,7 @@ export const cardDwarf_9 = {
 }
 
 export const cardOrc_0 = {
-  id : 1,
+  id : 10,
   name: "orc_00",
   img : "assets/cards/tile030.png",
   red : 1,
@@ -98,7 +98,7 @@ export const cardOrc_0 = {
 }
 
 export const cardOrc_1 = {
-  id: 2,
+  id: 11,
   name: "orc_01",
   img : "assets/cards/tile031.png",
   red : 2,
@@ -107,7 +107,7 @@ export const cardOrc_1 = {
 }
 
 export const cardOrc_2 = {
-  id : 3,
+  id : 12,
   name: "orc_02",
   img : "assets/cards/tile032.png",
   red : 2,
@@ -116,7 +116,7 @@ export const cardOrc_2 = {
 }
 
 export const cardOrc_3 = {
-  id : 4,
+  id : 13,
   name: "orc_03",
   img : "assets/cards/tile033.png",
   red : 2,
@@ -125,7 +125,7 @@ export const cardOrc_3 = {
 }
 
 export const cardOrc_4 = {
-  id : 5,
+  id : 14,
   name: "orc_04",
   img : "assets/cards/tile034.png",
   red : 6,
@@ -134,7 +134,7 @@ export const cardOrc_4 = {
 }
 
 export const cardOrc_5 = {
-  id : 6,
+  id : 15,
   name: "orc_05",
   img : "assets/cards/tile035.png",
   red : 4,
@@ -143,16 +143,16 @@ export const cardOrc_5 = {
 }
 
 export const cardOrc_6 = {
-  id : 7,
+  id : 16,
   name: "orc_06",
   img : "assets/cards/tile036.png",
-  red : 3,
-  blue : 6,
-  yellow : 5
+  red : 5,
+  blue : 5,
+  yellow : 4
 }
 
 export const cardOrc_7 = {
-  id : 8,
+  id : 17,
   name: "orc_07",
   img : "assets/cards/tile037.png",
   red : 3,
@@ -161,7 +161,7 @@ export const cardOrc_7 = {
 }
 
 export const cardOrc_8 = {
-  id : 9,
+  id : 18,
   name: "orc_08",
   img : "assets/cards/tile038.png",
   red : 7,
@@ -170,7 +170,7 @@ export const cardOrc_8 = {
 }
 
 export const cardOrc_9 = {
-  id : 0,
+  id : 19,
   name: "orc_09",
   img : "assets/cards/tile039.png",
   red : 3,
