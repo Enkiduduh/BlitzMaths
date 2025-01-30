@@ -268,7 +268,7 @@ function validateTurnPlayer(emplacement, emplacementId) {
 function battleReady() {
   console.log("let's battle begins.")
   recoverDataNumberColor();
- 
+
 }
 
 function startGame() {
