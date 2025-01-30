@@ -17,7 +17,7 @@ export function battleRuleLesserWins() {
   }
 }
 
-export function battleRuleGreaterWins(a,b) {
+export function battleRuleGreaterWins(a, b) {
   if (a > b) {
     console.log("Red battle won by Player")
     battleScorePlayer += 1
@@ -34,14 +34,13 @@ export function battleRuleGreaterWins(a,b) {
 
 
 export function recoverDataNumberColor() {
-
   const botSideRedOne = document.querySelector(`.bot-red-1`).textContent;
   const botSideBlueOne = document.querySelector(`.bot-blue-1`).textContent;
   const botSideYellowOne = document.querySelector(`.bot-yellow-1`).textContent;
 
   const botSideRedTwo = document.querySelector(`.bot-red-2`).textContent;
   const botSideBlueTwo = document.querySelector(`.bot-blue-2`).textContent;
-  const botSideYellowTwo= document.querySelector(`.bot-yellow-2`).textContent;
+  const botSideYellowTwo = document.querySelector(`.bot-yellow-2`).textContent;
 
   const botSideRedThree = document.querySelector(`.bot-red-3`).textContent;
   const botSideBlueThree = document.querySelector(`.bot-blue-3`).textContent;
@@ -59,45 +58,37 @@ export function recoverDataNumberColor() {
   const playerSideBlueThree = document.querySelector(`.player-blue-3`).textContent;
   const playerSideYellowThree = document.querySelector(`.player-yellow-3`).textContent;
 
-  playerDataScore.red1 = playerSideRedOne
-  playerDataScore.yellow1 = playerSideYellowOne
-  playerDataScore.blue1 = playerSideBlueOne
+  playerDataScore.one = { red: playerSideRedOne, yellow: playerSideYellowOne, blue: playerSideBlueOne }
+  playerDataScore.two = { red: playerSideRedTwo, yellow: playerSideYellowTwo, blue: playerSideBlueTwo }
+  playerDataScore.three = { red: playerSideRedThree, yellow: playerSideYellowThree, blue: playerSideBlueThree }
 
-  playerDataScore.red2 = playerSideRedTwo
-  playerDataScore.yellow2 = playerSideYellowTwo
-  playerDataScore.blue2 = playerSideBlueTwo
+  botDataScore.one = { red: botSideRedOne, yellow: botSideYellowOne, blue: botSideBlueOne }
+  botDataScore.two = { red: botSideRedTwo, yellow: botSideYellowTwo, blue: botSideBlueTwo }
+  botDataScore.three = { red: botSideRedThree, yellow: botSideYellowThree, blue: botSideBlueThree }
 
-  playerDataScore.red3 = playerSideRedThree
-  playerDataScore.yellow3 = playerSideYellowThree
-  playerDataScore.blue3 = playerSideBlueThree
 
-  botDataScore.red1 = botSideRedOne
-  botDataScore.yellow1 = botSideYellowOne
-  botDataScore.blue1 = botSideBlueOne
-
-  botDataScore.red2 = botSideRedTwo
-  botDataScore.yellow2 = botSideYellowTwo
-  botDataScore.blue2 = botSideBlueTwo
-
-  botDataScore.red3 = botSideRedThree
-  botDataScore.yellow3 = botSideYellowThree
-  botDataScore.blue3 = botSideBlueThree
+  console.log(playerDataScore)
+  console.log(playerDataScore.two)
+  console.log(playerDataScore.two.red)
 
   // test combat
-    battleRuleGreaterWins(playerDataScore.red1,botDataScore.red1)
-    // battleRuleGreaterWins(playerDataScore.red2,botDataScore.red2)
-    // battleRuleGreaterWins(playerDataScore.red3,botDataScore.red3)
+  const colors =[ "red", "blue", "yellow"];
+  const numbers =[ "one", "two", "three"];
+    battleRuleGreaterWins(playerDataScore.one.yellow, botDataScore.one.yellow)
 
-    console.log("battleScorePlayer:", battleScorePlayer )
-    console.log("battleScoreBot:", battleScoreBot )
+  
 
-    if (battleScorePlayer > battleScoreBot) {
-      console.log("Player won the battle !")
-    } else if  (battleScorePlayer < battleScoreBot){
-      console.log("Bot won the battle !")
-    } else {
-      console.log("There's no victorious challenger!")
-    }
+
+  console.log("battleScorePlayer:", battleScorePlayer)
+  console.log("battleScoreBot:", battleScoreBot)
+
+  if (battleScorePlayer > battleScoreBot) {
+    console.log("Player won the battle !")
+  } else if (battleScorePlayer < battleScoreBot) {
+    console.log("Bot won the battle !")
+  } else {
+    console.log("There's no victorious challenger!")
+  }
 }
 
 

@@ -1,7 +1,7 @@
 body {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin: 0;
   width: 100vw;
   height: 100vh;
@@ -9,6 +9,10 @@ body {
   font-family: "Pirata One", serif;
   position: relative;
   z-index: 1;
+  background-image: url("/assets/cards/starsbg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .game-zone {
@@ -24,16 +28,17 @@ body {
 }
 
 .card-emplacement-limit-zone {
-  height: 4px;
   width: 100%;
-  background: black;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .card-emplacement-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 460px;
+  width: 520px;
   height: 240px;
 }
 .card-emplacement {
@@ -85,12 +90,7 @@ body {
   pointer-events: none;
 }
 .result {
-  border: 5px solid black;
-  border-top: none;
-  border-bottom: none;
   border-radius: 10px;
-  margin: 8px auto;
-  padding: 5px 0;
   text-align: center;
   color: white;
   display: flex;
@@ -109,9 +109,31 @@ body {
   justify-content: center;
   align-items: center;
   text-shadow: 2px 1px 1px black;
-  font-size: 30px;
-  background-color: rgba(0, 0, 0, 0.576);
+  background-color: rgba(0, 0, 0, 0.800);
   font-family: "Spicy Rice", serif;
+}
+
+.infos-results-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 150px;
+
+  .info-result {
+    width: 35px;
+    height: 12px;
+    border: 5px solid black;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 2px 1px 1px black;
+    background-color: rgba(0, 0, 0, 0.576);
+    font-family: "Spicy Rice", serif;
+    font-size: 12px;
+  }
 }
 
 .player-red-1,
@@ -121,6 +143,7 @@ body {
 .bot-red-2,
 .bot-red-3 {
   color: rgba(148, 43, 43, 0.882);
+  font-size: 30px;
 }
 .player-blue-1,
 .player-blue-2,
@@ -129,6 +152,7 @@ body {
 .bot-blue-2,
 .bot-blue-3 {
   color: rgba(32, 81, 165, 0.919);
+  font-size: 30px;
 }
 .player-yellow-1,
 .player-yellow-2,
@@ -137,6 +161,7 @@ body {
 .bot-yellow-2,
 .bot-yellow-3 {
   color: rgba(246, 228, 70, 0.824);
+  font-size: 30px;
 }
 
 .hand-card-container {
@@ -265,4 +290,76 @@ body {
     background: blue;
     border: 7px solid goldenrod;
   }
+}
+
+.left-screen-container {
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  background: rgba(56, 55, 55, 0.633);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 5px solid black;
+}
+
+.right-screen-container {
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  background: rgba(56, 55, 55, 0.633);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-left: 5px solid black;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border: 7px solid goldenrod;
+  border-radius: 50%;
+}
+
+.pseudo {
+  font-size: 40px;
+  color: white;
+  text-align: center;
+}
+
+.lifepoints-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+.lifepoint {
+  .lifepoint-img {
+    width: 50px;
+  }
+}
+
+.powerpoints-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+.powerpoint {
+  .powerpoint-img {
+    width: 50px;
+  }
+}
+
+.category {
+  font-size: 25px;
+  color: white;
+  text-align: center;
+  margin: 20px 0 10px 0;
+}
+
+.avatar-img {
+  width: 120px;
+  border-radius: 50%;
+  background: rgba(199, 199, 199, 0.313);
 }
