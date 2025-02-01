@@ -15,10 +15,6 @@ const dataOrc = [cardOrc_0, cardOrc_1, cardOrc_2, cardOrc_3, cardOrc_4, cardOrc_
 const handCardContainerHTML = document.querySelector(".hand-card-container");
 const cardEmpPlayerHTML = document.querySelectorAll(".emplacement-player");
 
-const cardEmpBotHTML = document.querySelectorAll(".emplacement-bot");
-
-
-
 function InitializeBotCard() {
   for (let i = 1; i < 4; i++) {
     const handCardInjectionBot = `
@@ -81,7 +77,6 @@ function CardRecover() {
 
 const redHTML = document.querySelector(".r-red");
 const blueHTML = document.querySelector(".r-blue");
-const yellowHTML = document.querySelector(".r-yellow");
 
 let tempArr = [];
 let cardChoiceText = "";
@@ -179,11 +174,9 @@ function displayDataCardBot(empl, emplId) {
     console.log(resultHTML, emplIdRecover)
     const red = objCard[0].red;
     const blue = objCard[0].blue;
-    const yellow = objCard[0].yellow;
-    console.log(`red: ${red}`, `blue: ${blue}`, `yellow: ${yellow}`)
+    console.log(`red: ${red}`, `blue: ${blue}`)
     document.querySelector(`.bot-red-${emplIdRecover}`).textContent = red;
     document.querySelector(`.bot-blue-${emplIdRecover}`).textContent = blue;
-    document.querySelector(`.bot-yellow-${emplIdRecover}`).textContent = yellow;
   }
 }
 
@@ -203,10 +196,8 @@ function displayDataCard(empl, emplId) {
   if (objCard.length > 0) {
     const red = objCard[0].red;
     const blue = objCard[0].blue;
-    const yellow = objCard[0].yellow;
     document.querySelector(`.player-red-${emplIdRecover}`).textContent = red;
     document.querySelector(`.player-blue-${emplIdRecover}`).textContent = blue;
-    document.querySelector(`.player-yellow-${emplIdRecover}`).textContent = yellow;
   }
 }
 

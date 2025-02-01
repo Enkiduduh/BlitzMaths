@@ -110,17 +110,14 @@ body {
 }
 
 .result-case {
-  width: 20px;
-  height: 30px;
-  border: 5px solid black;
-  text-align: center;
+  width: 26px;
+  height: 38px;
   color: white;
-  // border-radius: 5px;
+  padding-left: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-shadow: 2px 1px 1px black;
-  background-color: rgba(0, 0, 0, 0.8);
+
   font-family: "Micro 5", serif;
 }
 
@@ -140,44 +137,78 @@ body {
     justify-content: center;
     align-items: center;
     text-shadow: 2px 1px 1px black;
-    background-color: rgba(0, 0, 0, 0.576);
     font-family: "Spicy Rice", serif;
   }
 }
 
 .player-red-1,
 .player-red-2,
-.player-red-3,
+.player-red-3 {
+  background: rgb(148, 43, 43);
+  color: whitesmoke;
+  font-size: 60px;
+  position: absolute;
+  z-index: 8;
+  left: 2px;
+  bottom: 0;
+  width: 26px;
+  height: 38px;
+  right: 2px;
+  border: 3px solid black;
+
+}
+
+.player-blue-1,
+.player-blue-2,
+.player-blue-3 {
+  position: absolute;
+  z-index: 7;
+  background-color: rgb(32, 81, 165);
+  color: whitesmoke;
+  font-size: 60px;
+  right: 2px;
+  bottom: 0;
+  width: 26px;
+  height: 38px;
+  right: 2px;
+  border: 3px solid black;
+
+}
+
 .bot-red-1,
 .bot-red-2,
 .bot-red-3 {
-  background: rgba(148, 43, 43, 0.882);
+  background: rgb(148, 43, 43);
   color: whitesmoke;
-
   font-size: 60px;
+  position: absolute;
+  z-index: 8;
+  left: 2px;
+  bottom: 180px;
+  width: 26px;
+  height: 38px;
+  right: 2px;
+  border: 1px solid whitesmoke;
+
 }
-.player-blue-1,
-.player-blue-2,
-.player-blue-3,
+
 .bot-blue-1,
 .bot-blue-2,
 .bot-blue-3 {
-  color: rgba(32, 81, 165, 0.919);
+  position: absolute;
+  z-index: 7;
+  background-color: rgb(32, 81, 165);
   color: whitesmoke;
-
   font-size: 60px;
-}
-.player-yellow-1,
-.player-yellow-2,
-.player-yellow-3,
-.bot-yellow-1,
-.bot-yellow-2,
-.bot-yellow-3 {
-  color: rgba(246, 228, 70, 0.824);
-  color: whitesmoke;
+  right: 2px;
+  bottom: 180px;
+  width: 26px;
+  height: 38px;
+  right: 2px;
+  border: 1px solid whitesmoke;
 
-  font-size: 60px;
 }
+
 
 .hand-card-container {
   display: flex;
